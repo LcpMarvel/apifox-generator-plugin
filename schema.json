@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "./schema.json",
+  "title": "Apifox Generator Configuration",
+  "description": "Configuration file for Apifox API client generator",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "global": {
+      "type": "object",
+      "description": "Global configuration for all APIs",
+      "properties": {
+        "defaultGenerator": {
+          "type": "string",
+          "description": "Default generator type",
+          "enum": [
+            "typescript-axios",
+            "typescript-fetch",
+            "typescript-node",
+            "java",
+            "go",
+            "python",
+            "kotlin",
+            "swift"
+          ],
+          "default": "typescript-axios"
+        },
+        "outputBaseDir": {
+          "type": "string",
+          "description": "Base directory for generated code",
+          "default": "src/api"
+        },
+        "hooks": {
+          "$ref": "#/definitions/hooks"
+        }
+      }
+    },
+    "apis": {
+      "type": "array",
+      "description": "List of API configurations",
+      "items": {
+        "$ref": "#/definitions/apiConfig"
+      }
+    }
+  },
+  "required": ["apis"],
+  "definitions": {
+    "apiConfig": {
+      "type": "object",
+      "description": "Configuration for a single API",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "API name (unique identifier)",
+          "pattern": "^[a-zA-Z0-9-_]+$"
+        },
+        "description": {
+          "type": "string",
+          "description": "API description"
+        },
+        "apifox": {
+          "type": "object",
+          "description": "Apifox project information",
+          "properties": {
+            "projectId": {
+              "type": "string",
+              "description": "Apifox project ID"
+            },
+            "documentId": {
+              "type": "string",
+              "description": "Apifox document ID"
+            },
+            "projectName": {
+              "type": "string",
+              "description": "Apifox project name (from MCP)"
+            },
+            "apiCount": {
+              "type": "number",
+              "description": "Number of API endpoints (from MCP)"
+            }
+          },
+          "required": ["projectId", "documentId"]
+        },
+        "generator": {
+          "type": "object",
+          "description": "Code generator configuration",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "Generator type",
+              "enum": [
+                "typescript-axios",
+                "typescript-fetch",
+                "typescript-node",
+                "java",
+                "go",
+                "python",
+                "kotlin",
+                "swift"
+              ]
+            },
+            "outputPath": {
+              "type": "string",
+              "description": "Output path for generated code (relative to project root)"
+            },
+            "configFile": {
+              "type": "string",
+              "description": "Path to OpenAPI Generator config file (optional)"
+            }
+          },
+          "required": ["type", "outputPath"]
+        },
+        "hooks": {
+          "$ref": "#/definitions/hooks"
+        },
+        "lastGenerated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last generation timestamp (ISO 8601)"
+        },
+        "autoDiscovered": {
+          "type": "boolean",
+          "description": "Whether this API was auto-discovered via MCP"
+        }
+      },
+      "required": ["name", "apifox", "generator"]
+    },
+    "hooks": {
+      "type": "object",
+      "description": "Hooks to run before/after code generation",
+      "properties": {
+        "preGenerate": {
+          "type": "array",
+          "description": "Commands to run before code generation",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postGenerate": {
+          "type": "array",
+          "description": "Commands to run after code generation",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

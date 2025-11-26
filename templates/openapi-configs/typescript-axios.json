@@ -1,0 +1,16 @@
+{
+  "supportsES6": true,
+  "withSeparateModelsAndApi": false,
+  "useSingleRequestParameter": true,
+  "removeOperationIdPrefix": true,
+  "nullSafeAdditionalProps": true,
+  "stringEnums": false,
+  "enumNameSuffix": "Enum",
+  "modelPropertyNaming": "camelCase",
+  "paramNaming": "camelCase",
+  "snapshot": false,
+  "withoutPrefixEnums": false,
+  "withNullable": true,
+  "sortParamsByRequiredFlag": true,
+  "sortModelPropertiesByRequiredFlag": true
+}

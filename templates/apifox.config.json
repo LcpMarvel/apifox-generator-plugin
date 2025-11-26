@@ -1,0 +1,8 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LcpMarvel/apifox-generator-plugin/master/schema.json",
+  "global": {
+    "defaultGenerator": "typescript-axios",
+    "outputBaseDir": "src/api"
+  },
+  "apis": []
+}

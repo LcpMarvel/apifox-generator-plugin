@@ -1,0 +1,13 @@
+{
+  "apifox": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "apifox-mcp-server@latest"
+    ],
+    "env": {
+      "APIFOX_ACCESS_TOKEN": "${APIFOX_ACCESS_TOKEN}",
+      "APIFOX_PROJECT_ID": "${APIFOX_PROJECT_ID}"
+    }
+  }
+}
