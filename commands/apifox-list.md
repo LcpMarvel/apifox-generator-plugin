@@ -73,31 +73,36 @@ Read("./apifox.config.json")
 检查并显示环境变量配置状态：
 
 ```bash
-# 检查环境变量
-if [ -f .env ]; then
-  # 读取环境变量（不输出值，只检查是否存在）
-  check_token=$(grep "^APIFOX_ACCESS_TOKEN=" .env)
-  check_project=$(grep "^APIFOX_PROJECT_ID=" .env)
+# 检查环境变量（从 shell 环境变量读取）
+echo "APIFOX_ACCESS_TOKEN: ${APIFOX_ACCESS_TOKEN:+✓ 已配置}"
+echo "APIFOX_ACCESS_TOKEN: ${APIFOX_ACCESS_TOKEN:-✗ 未配置}"
+
+# 检查 .mcp.json
+if [ -f .mcp.json ]; then
+  echo ".mcp.json: ✓ 存在"
+else
+  echo ".mcp.json: ✗ 不存在"
 fi
 ```
 
 展示状态：
 ```
 🔧 环境配置：
-- APIFOX_ACCESS_TOKEN: ✓ 已配置
-- APIFOX_PROJECT_ID: ✓ 已配置 (5384026)
-- .env 文件: ✓ 存在
-- .mcp.json: ✓ 存在
+- APIFOX_ACCESS_TOKEN: ✓ 已配置（shell 环境变量）
+- .mcp.json: ✓ 存在（包含 Project ID）
 ```
 
 或者如果有问题：
 ```
 ⚠️ 环境配置：
 - APIFOX_ACCESS_TOKEN: ✗ 未配置
-- APIFOX_PROJECT_ID: ✗ 未配置
-- .env 文件: ✗ 不存在
 
-请运行配置向导：/apifox-setup
+请先设置环境变量：
+1. export APIFOX_ACCESS_TOKEN="APS-xxxxx"
+2. 添加到 ~/.zshrc 永久生效
+3. 重启 Claude Code
+
+或运行初始化向导：/apifox-init
 ```
 
 ## 注意事项

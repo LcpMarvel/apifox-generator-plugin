@@ -98,12 +98,8 @@ export class SmartRecommender {
   /**
    * 推荐配置文件
    */
-  private recommendConfigFile(generator: GeneratorType): string | undefined {
-    // TypeScript 生成器推荐使用配置文件
-    if (generator.startsWith('typescript-')) {
-      return `openapi-configs/${generator}.json`;
-    }
-
+  private recommendConfigFile(_generator: GeneratorType): string | undefined {
+    // 配置内容通过 generateConfigFileContent() 动态生成，不再使用静态配置文件
     return undefined;
   }
 

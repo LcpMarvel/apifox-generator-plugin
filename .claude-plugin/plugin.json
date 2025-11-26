@@ -1,26 +1,9 @@
 {
   "name": "apifox-generator",
-  "displayName": "Apifox Client Generator",
+  "description": "从 Apifox 自动生成 API 客户端代码。支持多语言、智能推荐、项目级配置。",
   "version": "2.0.0",
-  "description": "通过自然对话从 Apifox 生成 API 客户端代码。支持多语言、智能推荐、项目级配置。",
-  "author": "LcpMarvel",
-  "repository": "https://github.com/yourusername/apifox-generator-plugin",
-  "license": "MIT",
-  "engines": {
-    "claudeCode": ">=1.0.0"
-  },
-  "keywords": [
-    "apifox",
-    "openapi",
-    "codegen",
-    "api-client",
-    "typescript",
-    "java",
-    "go",
-    "python",
-    "mcp"
-  ],
-  "icon": "🚀",
-  "homepage": "https://github.com/yourusername/apifox-generator-plugin#readme",
-  "bugs": "https://github.com/yourusername/apifox-generator-plugin/issues"
+  "author": {
+    "name": "LcpMarvel",
+    "url": "https://github.com/LcpMarvel"
+  }
 }

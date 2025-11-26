@@ -6,11 +6,12 @@
     "allowed": [
       "mcp__apifox__list_projects",
       "mcp__apifox__get_apis",
-      "mcp__apifox__get_openapi_spec",
+      "mcp__apifox__get_export_config",
       "Read",
       "Write",
       "Edit",
-      "Bash"
+      "Bash",
+      "fetch"
     ]
   },
   "timeout": 180000
